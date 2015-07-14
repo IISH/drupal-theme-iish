@@ -11,6 +11,73 @@
  * for more information on this topic.
  */
 
+// START TEMPLATE FUNCTIONS FOR IISH AGENDA
+/*
+ * Adds reservation number (node id) and cancelled value to template
+ */
+function iisg_preprocess_node(&$variables, $hook){
+    if($variables["type"] == "event"){
+        $variables["reservation_number"] =  t("Reserveringsnummer: ")."#".$variables["nid"];
+        if(isset($variables['field_canceled'][LANGUAGE_NONE][0]) && $variables['field_canceled'][LANGUAGE_NONE][0]['value'] == 1)  $variables["canceled"] = t("Geannuleerd");
+    }
+}
+
+/*
+ * Makes changes to event views output
+ */
+function iisg_views_pre_render(&$view) {
+
+    switch ($view->name) {
+        case 'upcoming_events':
+
+            foreach($view->result as $r => &$result) {
+                _cancelcheck($result);
+                if($result->field_field_special[0]['raw']['value'] == 1){
+                    $result->field_field_special[0]['rendered']['#markup'] = "<img class='special' src='/".drupal_get_path('module','iishagenda')."/images/special.png' title='Dit is een speciaal evenement'>";
+                }else{
+                    $result->field_field_special[0]['rendered']['#markup'] = '';
+                }
+            }
+            break;
+
+        case 'calendar':
+            foreach($view->result as $r => &$result) {
+                if(isset($result->field_field_canceled)){
+                    _cancelcheck($result);
+                }
+                $approved = issetor($result->field_field_approved[0]['raw']['value'],false);
+                if($approved !== "1"){
+                    $result->node_title = "- nog niet bevestigd -";
+                }
+            }
+            break;
+
+        case 'catering':
+            foreach($view->result as $r => &$result) {
+                if(isset($result->field_field_note[0]) && isset($result->field_field_event_room[0])){
+                    $note = '<div class="messagepop pop">'.nl2br($result->field_field_note[0]["rendered"]["#markup"]).'</div>';
+                    $markup = $result->field_field_event_room[0]["rendered"]["#markup"] ."<br>".$note.'<a href="#" class="messagepop-link">opmerking!</a>' ;
+                    $result->field_field_event_room[0]["rendered"] = array('#markup'=>$markup,'#access'=>TRUE);
+                }
+            }
+            break;
+    }
+}
+/*
+ * Add cancelled div for cancelled events
+ */
+function _cancelcheck(&$result){
+    if(isset($result->field_field_canceled)){
+        if( $result->field_field_canceled[0]['raw']['value'] == 1){
+            $result->field_field_canceled[0]['rendered'] = "<span class='cancelled'>geannuleerd</span>";
+        }else{
+            $result->field_field_canceled[0]['rendered'] = "";
+        }
+    }
+}
+// END TEMPLATE FUNCTIONS FOR IISH AGENDA
+
+
 
 /**
  * Return a themed breadcrumb trail. (Taken from Zen)
