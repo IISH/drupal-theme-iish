@@ -66,9 +66,11 @@ function iisg_views_pre_render(&$view) {
             foreach($view->result as $r => &$result) {
                 _cancelcheck($result);
                 if(isset($result->field_field_note[0]) && isset($result->field_field_event_room[0])){
-                    $note = '<div class="messagepop pop">'.nl2br($result->field_field_note[0]["rendered"]["#markup"]).'</div>';
-                    $markup = $note.'<a href="#" class="messagepop-link">opmerking!</a><br>'.$result->field_field_event_room[0]["rendered"]["#markup"];;
-                    $result->field_field_event_room[0]["rendered"] = array('#markup'=>$markup,'#access'=>TRUE);
+                    $bg_image = "/".drupal_get_path('module','iishagenda')."/images/note_bg.png";
+                    $note = '<div class="messagepop pop" style="background-image: url('.$bg_image.');">'.nl2br($result->field_field_note[0]["rendered"]["#markup"]).'</div>';
+                    $index = count($result->field_field_event_room)-1;
+                    $markup = $result->field_field_event_room[$index]["rendered"]["#markup"].'<br><a href="#" class="messagepop-link">opmerking!</a>'.$note;
+                    $result->field_field_event_room[$index]["rendered"] = array('#markup'=>$markup,'#access'=>TRUE);
                 }
             }
             break;
