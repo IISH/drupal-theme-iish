@@ -1,5 +1,5 @@
-<?php  if(isset($variables['canceled'])): ?>
-    <div class="cancelled"><?php  print render($variables['canceled']); ?></div>
+<?php  if(isset($variables['cancelled'])): ?>
+    <div class="cancelled"><?php  print render($variables['cancelled']); ?></div>
 <?php endif; ?>
 
 <div style="clear: both;"></div>
@@ -23,9 +23,16 @@
 
     <?php endif; ?>
 
+    <?php if($clone): ?>
+        <a href="/clone/<?php print $node->nid;?>">Clone evenement</a>
+    <?php endif; ?>
+
+
     <div<?php print $content_attributes; ?>>
 
         <?php
+
+
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
         hide($content['links']);
