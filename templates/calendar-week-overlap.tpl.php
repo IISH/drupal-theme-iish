@@ -30,8 +30,6 @@ foreach ($day_names as $key => $value) {
 //dsm('Display: '. $display_type .': '. $min_date_formatted .' to '. $max_date_formatted);
 ?>
 
-
-
 <?php
 $start_date = date_format($view->date_info->min_date, 'U');
 ?>
