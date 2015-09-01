@@ -14,8 +14,7 @@
 /*
  * Adds reservation number (node id) and cancelled value to template
  */
-function iisg_preprocess_node(&$variables, $hook)
-{
+function iisg_preprocess_node(&$variables, $hook) {
 	if ($variables["type"] == "event") {
 		$variables["reservation_number"] = t("Reserveringsnummer: ") . "#" . $variables["nid"];
 
@@ -34,8 +33,7 @@ function iisg_preprocess_node(&$variables, $hook)
 /*
  * Makes changes to event views output
  */
-function iisg_views_pre_render(&$view)
-{
+function iisg_views_pre_render(&$view) {
 	switch ($view->name) {
 		case 'today_events':
 			foreach ($view->result as $r => &$result) {
@@ -77,8 +75,7 @@ function iisg_views_pre_render(&$view)
 /*
  * Add cancelled div for cancelled events
  */
-function _cancelcheck(&$result)
-{
+function _cancelcheck(&$result) {
 	if (isset($result->field_field_event_status) && isset($result->field_field_event_status[0])) {
 		if ($result->field_field_event_status[0]['raw']['value'] == 'cancelled') {
 			$result->field_field_event_status[0]['rendered'] = "<span class='cancelled'>geannuleerd</span>";
@@ -95,13 +92,10 @@ function _cancelcheck(&$result)
 	}
 }
 
-// END TEMPLATE FUNCTIONS FOR IISH AGENDA
-
 /*
  * Adds class to colorize events in calendar based on int/ext field value
  */
-function iisg_preprocess_calendar_item(&$vars)
-{
+function iisg_preprocess_calendar_item(&$vars) {
 	$view = $vars['view'];
 	if ($view->name == "calendar") {
 		$item = $vars["item"];
@@ -112,8 +106,7 @@ function iisg_preprocess_calendar_item(&$vars)
 /*
  * Changes date titles of calendar views
  */
-function iisg_date_nav_title($params)
-{
+function iisg_date_nav_title($params) {
 	$granularity = $params['granularity'];
 	$view = $params['view'];
 	$date_info = $view->date_info;
@@ -148,6 +141,7 @@ function iisg_date_nav_title($params)
 		return $title;
 	}
 }
+// END TEMPLATE FUNCTIONS FOR IISH AGENDA
 
 /**
  * Return a themed breadcrumb trail. (Taken from Zen)
@@ -165,8 +159,7 @@ function iisg_date_nav_title($params)
  * @return
  *   A string containing the breadcrumb output.
  */
-function iisg_breadcrumb($variables)
-{
+function iisg_breadcrumb($variables) {
 	$breadcrumb = $variables['breadcrumb'];
 
 	// Return the breadcrumb with separators.
@@ -204,8 +197,7 @@ function iisg_breadcrumb($variables)
 }
 
 // http://api.drupal.org/api/drupal/modules--field--field.module/function/theme_field/7
-function iisg_field__field_color($variables)
-{
+function iisg_field__field_color($variables) {
 	// Render the items.
 	foreach ($variables['items'] as $delta => $item) {
 		$output = drupal_render($item);
@@ -214,8 +206,7 @@ function iisg_field__field_color($variables)
 	return $output;
 }
 
-function iisg_field__field_slideshow_link($variables)
-{
+function iisg_field__field_slideshow_link($variables) {
 	// Render the items.
 	foreach ($variables['items'] as $delta => $item) {
 		$output = '<span class="read-more">' . drupal_render($item) . '</span>';
@@ -225,8 +216,7 @@ function iisg_field__field_slideshow_link($variables)
 }
 
 // TODO print key instead of value (or value instead of #markup)
-function iisg_field__field_slideshow_image_size($variables)
-{
+function iisg_field__field_slideshow_image_size($variables) {
 	// Render the items.
 	foreach ($variables['items'] as $delta => $item) {
 		$output = 'img' . drupal_render($item); // A class should start with alpha char.
@@ -236,8 +226,7 @@ function iisg_field__field_slideshow_image_size($variables)
 }
 
 // Hide current language from language switcher.
-function iisg_language_switch_links_alter(array &$links, $type, $path)
-{
+function iisg_language_switch_links_alter(array &$links, $type, $path) {
 	global $language;
 
 	$current = $language->language;
@@ -245,26 +234,9 @@ function iisg_language_switch_links_alter(array &$links, $type, $path)
 }
 
 /*
-function print_node_view($node) {
-
-  if (node view) && (module_exists('print')) {
-
-    $print_html_link_pos = variable_get('print_html_link_pos', array(PRINT_HTML_LINK_POS_DEFAULT => PRINT_HTML_LINK_POS_DEFAULT));
-    $allowed_type = print_link_allowed(array('type' => 'node', 'node' => $node, 'teaser' => FALSE));
-
-    if (!empty($print_html_link_pos['corner'])) {
-      $variables['print_links'] = '<span class="print-link">'. print_insert_link(NULL, $node) .'</span>';
-    }
-
-  }
-}
-*/
-
-/*
  * Allow HTML in pager link.
  */
-function iisg_pager_link($variables)
-{
+function iisg_pager_link($variables) {
 	$text = $variables['text'];
 	$page_new = $variables['page_new'];
 	$element = $variables['element'];
@@ -314,8 +286,7 @@ function iisg_pager_link($variables)
 /*
  * Use images for first, last, previous, next.
  */
-function iisg_pager($variables)
-{
+function iisg_pager($variables) {
 	global $pager_page_array, $pager_total;
 
 	$tags = $variables['tags'];
@@ -430,8 +401,7 @@ function iisg_pager($variables)
 	}
 }
 
-function iisg_pager_first($variables)
-{
+function iisg_pager_first($variables) {
 	global $pager_page_array;
 
 	$text = $variables['text'];
@@ -448,8 +418,7 @@ function iisg_pager_first($variables)
 	return $output;
 }
 
-function iisg_pager_previous($variables)
-{
+function iisg_pager_previous($variables) {
 	global $pager_page_array;
 
 	$text = $variables['text'];
@@ -475,8 +444,7 @@ function iisg_pager_previous($variables)
 	return $output;
 }
 
-function iisg_pager_next($variables)
-{
+function iisg_pager_next($variables) {
 	global $pager_page_array, $pager_total;
 
 	$text = $variables['text'];
@@ -501,8 +469,7 @@ function iisg_pager_next($variables)
 	return $output;
 }
 
-function iisg_pager_last($variables)
-{
+function iisg_pager_last($variables) {
 	global $pager_page_array, $pager_total;
 
 	$text = $variables['text'];
@@ -522,7 +489,6 @@ function iisg_pager_last($variables)
 /*
  * Make "Profile" translatable.
  */
-function iisg_preprocess_user_profile_category(&$variables)
-{
+function iisg_preprocess_user_profile_category(&$variables) {
 	$variables['title'] = t($variables['title']);
 }
