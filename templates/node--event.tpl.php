@@ -19,8 +19,7 @@
     <?php endif; ?>
     <?php print render($title_suffix); ?>
     <?php if ($display_submitted): ?>
-        <footer class="submitted">Aangemaakt door <?php print $name; ?> op <?php print $date; ?> </footer>
-
+        <footer class="submitted">Aangemaakt door <?php print $name; ?> op <?php print $create_date; ?></footer>
     <?php endif; ?>
 
     <?php if($clone): ?>
@@ -31,8 +30,6 @@
     <div<?php print $content_attributes; ?>>
 
         <?php
-
-
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
         hide($content['links']);

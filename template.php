@@ -16,6 +16,7 @@
  */
 function iisg_preprocess_node(&$variables, $hook) {
 	if ($variables["type"] == "event") {
+
 		$variables["reservation_number"] = t("Reserveringsnummer: ") . "#" . $variables["nid"];
 
 		if ($variables['field_event_status'][0]['value'] == 'cancelled') {
@@ -27,6 +28,8 @@ function iisg_preprocess_node(&$variables, $hook) {
 		} else {
 			$variables["clone"] = false;
 		}
+
+        $variables["create_date"] = format_date($variables["created"], 'event_date');
 	}
 }
 
