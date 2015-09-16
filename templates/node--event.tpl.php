@@ -3,11 +3,11 @@
 <?php endif; ?>
 
 <div style="clear: both;"></div>
-
+<?php print $user_picture; ?>
 <?php print $variables["reservation_number"]; ?>
 
 <article<?php print $attributes; ?>>
-    <?php print $user_picture; ?>
+
     <?php print render($title_prefix); ?>
     <?php if (!$page && $title): ?>
         <header>
@@ -23,7 +23,7 @@
     <?php endif; ?>
 
     <?php if($clone): ?>
-        <a href="/clone/<?php print $node->nid;?>">Clone evenement</a>
+        <a class='clone-link' href="/clone/<?php print $node->nid;?>">Clone evenement</a>
     <?php endif; ?>
 
 
