@@ -44,12 +44,17 @@ function iisg_views_pre_render(&$view) {
 			}
 			break;
 		case 'upcoming_events':
-			// My events display should show any status
-			if ($view->current_display !== "page_1") {
-				foreach ($view->result as $r => &$result) {
-					_cancelcheck($result);
-				}
-			}
+
+            // My events display should show any status
+            $ics_icon = "/".drupal_get_path("module","iishagenda")."/images/ics-icon.gif";
+
+            foreach ($view->result as $r => &$result) {
+
+                if ($view->current_display !== "page_1") _cancelcheck($result); // My events display should show any status
+                $result->field_field_event_date[0]['rendered']["#markup"] = "<a class='ics-link' href='/ics/".$result->nid."' title='Download .ics'><img src='".$ics_icon."' alt='ics'></a>".$result->field_field_event_date[0]['rendered']["#markup"];
+
+            }
+
 			break;
 		case 'calendar':
 			foreach ($view->result as $r => &$result) {
@@ -59,6 +64,7 @@ function iisg_views_pre_render(&$view) {
 					$result->node_title = "- nog niet bevestigd -";
 				}
 			}
+
 			break;
 		case 'catering':
 			foreach ($view->result as $r => &$result) {
@@ -99,11 +105,13 @@ function _cancelcheck(&$result) {
  * Adds class to colorize events in calendar based on int/ext field value
  */
 function iisg_preprocess_calendar_item(&$vars) {
+
 	$view = $vars['view'];
 	if ($view->name == "calendar") {
 		$item = $vars["item"];
-		$vars["item"]->class = "item " . $item->row->field_field_internal_external[0]['raw']['value'];
+		$vars["item"]->class .= " item " . $item->row->field_field_internal_external[0]['raw']['value'];
 	}
+
 }
 
 /*

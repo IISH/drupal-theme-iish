@@ -22,9 +22,21 @@
         <footer class="submitted">Aangemaakt door <?php print $name; ?> op <?php print $create_date; ?></footer>
     <?php endif; ?>
 
+
+
+
     <?php if($clone): ?>
         <a class='clone-link' href="/clone/<?php print $node->nid;?>">Clone evenement</a>
     <?php endif; ?>
+
+    <div style="clear: both;"></div>
+
+
+    <a class='ics-full-link' href="/ics/<?php print $node->nid;?>">
+        <img src="/<?php print drupal_get_path('module','iishagenda')."/images/ics-icon.gif";?>">
+        <span>Download .ics bestand om dit evenement in je eigen kalender op te slaan.</span>
+    </a>
+
 
 
     <div<?php print $content_attributes; ?>>
