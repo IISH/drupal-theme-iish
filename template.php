@@ -11,14 +11,12 @@
  * for more information on this topic.
  */
 // START TEMPLATE FUNCTIONS FOR IISH AGENDA
-/*
+/**
  * Adds reservation number (node id) and cancelled value to template
  */
 function iisg_preprocess_node(&$variables, $hook) {
 	if ($variables["type"] == "event") {
-
 		$variables["reservation_number"] = t("Reserveringsnummer: ") . "#" . $variables["nid"];
-
 		if ($variables['field_event_status'][0]['value'] == 'cancelled') {
 			$variables["cancelled"] = t("Geannuleerd");
 		}
@@ -33,7 +31,7 @@ function iisg_preprocess_node(&$variables, $hook) {
 	}
 }
 
-/*
+/**
  * Makes changes to event views output
  */
 function iisg_views_pre_render(&$view) {
@@ -52,7 +50,6 @@ function iisg_views_pre_render(&$view) {
 
                 if ($view->current_display !== "page_1") _cancelcheck($result); // My events display should show any status
                 $result->field_field_event_date[0]['rendered']["#markup"] = "<a class='ics-link' href='/ics/".$result->nid."' title='Download .ics'><img src='".$ics_icon."' alt='ics'></a>".$result->field_field_event_date[0]['rendered']["#markup"];
-
             }
 
 			break;
@@ -81,7 +78,7 @@ function iisg_views_pre_render(&$view) {
 	}
 }
 
-/*
+/**
  * Add cancelled div for cancelled events
  */
 function _cancelcheck(&$result) {
@@ -101,20 +98,22 @@ function _cancelcheck(&$result) {
 	}
 }
 
-/*
+/**
  * Adds class to colorize events in calendar based on int/ext field value
  */
 function iisg_preprocess_calendar_item(&$vars) {
-
 	$view = $vars['view'];
 	if ($view->name == "calendar") {
 		$item = $vars["item"];
-		$vars["item"]->class .= " item " . $item->row->field_field_internal_external[0]['raw']['value'];
+		if(isset($vars["item"]->class)){
+            $vars["item"]->class .= " item " . $item->row->field_field_internal_external[0]['raw']['value'];
+        }else{
+            $vars["item"]->class = " item " . $item->row->field_field_internal_external[0]['raw']['value'];
+        }
 	}
-
 }
 
-/*
+/**
  * Changes date titles of calendar views
  */
 function iisg_date_nav_title($params) {
@@ -153,6 +152,7 @@ function iisg_date_nav_title($params) {
 	}
 }
 // END TEMPLATE FUNCTIONS FOR IISH AGENDA
+
 
 /**
  * Return a themed breadcrumb trail. (Taken from Zen)
