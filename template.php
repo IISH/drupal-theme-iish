@@ -52,6 +52,7 @@ function iisg_views_pre_render(&$view) {
 
             break;
 		case 'calendar':
+        case 'calendar_flex':
 			foreach ($view->result as $r => &$result) {
 				_cancelcheck($result);
 				$status = issetor($result->field_field_event_status[0]['raw']['value'], false);
@@ -100,6 +101,7 @@ function _cancelcheck(&$result) {
  * Adds class to colorize events in calendar based on int/ext field value
  */
 function iisg_preprocess_calendar_item(&$vars) {
+
 	$view = $vars['view'];
 	if ($view->name == "calendar" || $view->name == "calendar_flex") {
 		$item = $vars["item"];
