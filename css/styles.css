@@ -1658,3 +1658,27 @@ div[id^="block-block-"]
 .views-row-first.views-row-last {
 	margin-bottom: 0px;
 }
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+        margin-right: 5px !important;
+        xxxborder: 1px dashed yellow;
+}
+
+div #region-content.grid-1
+, div #region-content.grid-2
+, div #region-content.grid-3
+, div #region-content.grid-4
+, div #region-content.grid-5
+, div #region-content.grid-6
+, div #region-content.grid-7
+, div #region-content.grid-8
+, div #region-content.grid-9
+, div #region-content.grid-10
+, div #region-content.grid-11
+, div #region-content.grid-12 {
+        xxxborder: 1px dashed yellow;
+}
+
+ul#nice-menu-1 {
+        width: 850px !important;
+}
