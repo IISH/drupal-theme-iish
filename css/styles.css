@@ -1682,3 +1682,222 @@ div #region-content.grid-1
 ul#nice-menu-1 {
         width: 850px !important;
 }
+
+/* START GRANTS */
+
+.container-grant {
+	width: 100%;
+	overflow: hidden;
+}
+
+.left-grant {
+	border: 0px solid black;
+	background-color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 270px
+	position: absolute left 10px;
+}
+
+.right-grant {
+	border: 0px solid black;
+	background-color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 50px
+	position: absolute left 330px;
+}
+
+.bottom-left-grant {
+	border: 0px solid black;
+	background-color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 130px
+	position: absolute left 10px;
+}
+
+.bottom-center-grant {
+	border: 0px solid black;
+	background-color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 110px
+	position: absolute left 140px;
+}
+
+.bottom-right-grant {
+	border: 0px solid black;
+	background-color: #fff;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0px;
+	width: 50px
+	position: absolute left 365px;
+}
+
+.fase1-head {
+	border: 1px solid black;
+	background-color: #5DD641;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 270px;
+}
+
+.fase2-head {
+	border: 1px solid black;
+	background-color: #B7DE14;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 270px;
+}
+
+.fase3-head {
+	border: 1px solid black;
+	background-color: #FFF500;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 270px;
+}
+
+.fase4-head {
+	border: 1px solid black;
+	background-color: #FF0303;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 270px;
+}
+
+.fase5-head {
+	border: 1px solid black;
+	background-color: #9BDED1;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 134px;
+}
+
+.fase6-head {
+	border: 1px solid black;
+	background-color: #E0E0E0;
+	filter: opacity(55%);
+	float: left;
+	padding: 5px;
+	width: 114px;
+}
+
+.fase-body {
+	border: solid #000;
+	border-width: 0px 1px 1px 1px;
+	background-color: #ffffff;
+	text-transform: uppercase;
+	float: left;
+	padding: 10px;
+	width: 260px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+.fase5-body {
+	border: solid #000;
+	border-width: 0px 1px 1px 1px;
+	background-color: #ffffff;
+	text-transform: uppercase;
+	float: left;
+	padding: 10px 10px 9px 10px; 
+	width: 124px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+.fase6-body {
+	border: solid #000;
+	border-width: 0px 1px 1px 1px;
+	background-color: #ffffff;
+	text-transform: uppercase;
+	float: left;
+	padding: 10px 10px 9px 10px; 
+	width: 104px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+.fase1-square {
+	border: 1px solid #000;
+	background-color: #5DD641;
+	filter: opacity(55%);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 30px;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 18px 8px 2px 8px;	
+	overflow: hidden;
+}
+
+.fase2-square {
+	border: 1px solid #000;
+	background-color: #B7DE14;
+	filter: opacity(55%);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 18px 8px 0px 8px;	
+	overflow: hidden;
+}
+
+.fase3-square {
+	border: 1px solid #000;
+	background-color: #FFF500;
+	filter: opacity(55%);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 8px 8px 11px 8px;	
+	overflow: hidden;
+}
+
+.fase4-square {
+	border: 1px solid #000;
+	background-color: #FF0303;
+	filter: opacity(55%);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 8px 8px 11px 8px;	
+	overflow: hidden;
+}
+
+.fase5-square {
+	border: 1px solid #000;
+	background-color: #9BDED1;
+	filter: opacity(55%);
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	float: right;
+	width: 50px;
+	height: 50px;
+	padding: 10px 8px 9px 8px;	
+	overflow: hidden;
+}
+
+/* EINDE GRANTS */
